@@ -17,7 +17,7 @@ rsync --quiet --archive --xattrs --acls /etc.transactional-update/ /etc
 rm -r /etc.transactional-update
 
 # Add entry for /etc
-echo "/etc /etc none bind,x-initrd.mount 0 0" >> /etc/fstab
+echo "/etc /etc none bind 0 0" >> /etc/fstab
 
 # Make the /root subvolume available during ignition runs (boo#1161264)
 gawk -i inplace '$2 == "/root" { $4 = $4",x-initrd.mount" } { print $0 }' /etc/fstab
